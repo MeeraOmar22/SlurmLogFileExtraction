@@ -506,9 +506,11 @@ public class GroupProject {
         public static void exitstatus() throws IOException{
             String file = "/Users/User/Documents/FOP LAB.TUTORIAL/fop.txt";
             List<String> allLines = Files.readAllLines(Paths.get(file));
-            int exitZero=0, exitOne=0;
+            int exitZero=0, exitOne=0, exitTwo=0;;
             int six=0, seven=0, eight=0, nine=0, ten=0, eleven=0, twelve=0;
             int sixZero=0, sevenZero=0, eightZero=0, nineZero=0, tenZero=0, elevenZero=0, twelveZero=0; 
+            int sixTwo=0, sevenTwo=0, eightTwo=0, nineTwo=0, tenTwo=0, elevenTwo=0, twelveTwo=0; 
+		
             for(String line : allLines){
                 Pattern pattern3 = Pattern.compile("(\\[)([0-9]+)(-)([0-9]+)(-[0-9]+)+(T)(([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?(:([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[eE]([+-]?\\d+))?)+)(\\])(\\s_[a-zA-Z]+_[a-zA-Z]+:\\s)([a-zA-Z]+=[0-9]+\\s)([WEXITSTATUS^]+\\s)(\\d)");
                 Matcher matcher3= pattern3.matcher(line);
@@ -544,11 +546,33 @@ public class GroupProject {
                   elevenZero++;
               }else if(matcher3.group(4).contains("12") && matcher3.group(17).contains("0")){
                   twelveZero++;
+              }else if(matcher3.group(4).contains("6") && matcher3.group(17).contains("2")){
+                  sixTwo++;
+              }else if(matcher3.group(4).contains("7") && matcher3.group(17).contains("2")){
+                  sevenTwo++;
+              }else if(matcher3.group(4).contains("8") && matcher3.group(17).contains("2")){
+                  eightTwo++;
+              }else if(matcher3.group(4).contains("9") && matcher3.group(17).contains("2")){
+                  nineTwo++;
+              }else if(matcher3.group(4).contains("10") && matcher3.group(17).contains("2")){
+                  tenTwo++;
+              }else if(matcher3.group(4).contains("11") && matcher3.group(17).contains("2")){
+                  elevenTwo++;
+              }else if(matcher3.group(4).contains("12") && matcher3.group(17).contains("2")){
+                  twelveTwo++;
             }
         }
    }
         
-   
+        System.out.println("Numbers of Works with Exit 2 by month");
+        System.out.println("June: " + sixTwo);
+        System.out.println("July: " + sevenTwo);
+        System.out.println("August: " + eightTwo);
+        System.out.println("Semptember: " + nineTwo);  
+        System.out.println("October: " + tenTwo);
+        System.out.println("November: " + elevenTwo);
+        System.out.println("December: " + twelveTwo);
+        System.out.println(""); 
                 
         System.out.println("Numbers of Works with Exit 1 by month");
         System.out.println("June: " + six);
@@ -571,37 +595,48 @@ public class GroupProject {
         
         exitZero = sixZero + sevenZero + eightZero + nineZero + tenZero + elevenZero + twelveZero;
         exitOne = six + seven + eight + nine + ten + eleven + twelve;
+        exitTwo = sixTwo + sevenTwo + eightTwo + nineTwo + tenTwo + elevenTwo + twelveTwo;
         System.out.println("");
         System.out.println("Total number of works with Exit 0: " + exitZero);
         System.out.println("Total number of works with Exit 1: " + exitOne);
+        System.out.println("Total number of works with Exit 2: " + exitTwo);
+        
         
         // Create Dataset  
         DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
-        // Number of works in June  
+		
+        // Number of works in June
+    dataset.addValue(44, "Exit Status : 2", "June"); 
     dataset.addValue(513, "Exit Status : 1 ", "June");  
     dataset.addValue(1292, "Exit Status : 0", "June"); 
     
       // Number of works in July
+    dataset.addValue(10, "Exit Status : 2", "July"); 		
     dataset.addValue(1777, "Exit Status : 1 ", "July");  
     dataset.addValue(779, "Exit Status : 0", "July");  
     
      // Number of works in August
+    dataset.addValue(62, "Exit Status : 2", "August"); 		
     dataset.addValue(0, "Exit Status : 1 ", "August");  
     dataset.addValue(782, "Exit Status : 0", "August"); 
     
      // Number of works in September
+    dataset.addValue(17, "Exit Status : 2", "September"); 	
     dataset.addValue(0, "Exit Status : 1 ", "September");  
     dataset.addValue(821, "Exit Status : 0", "September"); 
     
      // Number of works in October
+    dataset.addValue(25, "Exit Status : 2", "October"); 		
     dataset.addValue(0, "Exit Status : 1 ", "October");  
     dataset.addValue(1087, "Exit Status : 0", "October"); 
     
      // Number of works in November
+    dataset.addValue(17, "Exit Status : 2", "November");		
     dataset.addValue(0, "Exit Status : 1 ", "November");  
     dataset.addValue(687, "Exit Status : 0", "November"); 
     
      // Number of works in December
+    dataset.addValue(11, "Exit Status : 2", "December"); 
     dataset.addValue(0, "Exit Status : 1 ", "December");  
     dataset.addValue(331, "Exit Status : 0", "December");  
 
